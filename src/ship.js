@@ -1,6 +1,12 @@
 //src file
-function Ship(startingPort) {
-    this.startingPort = startingPort;
+class Ship {
+    constructor(startingPort) {
+        this.startingPort = startingPort;
+    }
+
+    setSail() {
+        return this.hasSetSail = true;
+    };
 }
 
 module.exports = Ship;
