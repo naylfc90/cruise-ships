@@ -1,6 +1,7 @@
 //Ship test file
 const Ship = require("../src/ship");
 const Port = require("../src/port");
+const Itinerary = require("../src/itinerary");
 
 describe("Ship", () => {
     it("returns an object", () => {
@@ -17,7 +18,7 @@ describe("Ship", () => {
     it("checks the ship has set sail", () => {
       const ship = new Ship("Albert Dock");
       ship.setSail();
-      expect(ship.hasSetSail).toBeTruthy();
+      expect(ship.setSail).toBeTruthy();
     });
     it("checks that ship object can be created with port object", () => {
       const isleOfMan = new Port("Isle of Man");
@@ -35,4 +36,23 @@ describe("Ship", () => {
       ship.dock("Albert Dock");
       expect(ship.currentPort).toEqual("Albert Dock");
     });
+    it("checks the ship object can be created with Itinerary class", () => {
+      const albertDock = new Port("Albert Dock");
+      const isleOfMan = new Port("Isle of Man");
+      const ship = new Ship([albertDock, isleOfMan]);
+      expect(ship.currentPort).toEqual([albertDock, isleOfMan]);
+    });
+    it("checks the ship has set sailed by showing previous port", () => {
+      const albertDock = new Port("Albert Dock");
+      const ship = new Ship(albertDock);
+      ship.setSail();
+      expect(ship.previousPort).toEqual(albertDock);
+    });
+    // it("checks ship can dock at different ports", () => {
+    //   const albertDock = new Port("Albert Dock");
+    //   const isleOfMan = new Port("Isle of Man");
+    //   const ship = new Ship([albertDock, isleOfMan]);
+    //   ship.dock();
+    //   expect(ship.currentPort).toEqual(isleOfMan);
+    // });
 });
