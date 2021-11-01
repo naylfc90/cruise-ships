@@ -10,18 +10,12 @@ describe("Ship", () => {
       const ship = new Ship(itinerary);
       expect(ship).toBeInstanceOf(Object);
     });
-    it("checks the object has a startingPort property", () => {
-        const port = new Port("Albert Dock");
-        const itinerary = new Itinerary([port]);
+    it("checks the object has a currentPort property", () => {
+        const albertDock = new Port("Albert Dock");
+        const isleOfMan = new Port("Isle of Man");
+        const itinerary = new Itinerary([albertDock, isleOfMan]);
         const ship = new Ship(itinerary);
-        expect(ship.currentPort).toEqual(port);
-    });
-    it("checks the ship has not set sail without captains approval", () => {
-      const albertDock = new Port("Albert Dock");
-      const isleOfMan = new Port("Isle of Man");
-      const itinerary = new Itinerary([albertDock, isleOfMan]);
-      const ship = new Ship(itinerary);
-      expect(ship.setSail()).toBeFalsy();
+        expect(ship.currentPort).toEqual(albertDock);
     });
     it("checks the ship has set sail", () => {
       const albertDock = new Port("Albert Dock");
