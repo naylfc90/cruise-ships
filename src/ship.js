@@ -1,12 +1,16 @@
-//src file
+//Ship src file
 class Ship {
-    constructor(startingPort) {
-        this.startingPort = startingPort;
+    constructor(currentPort) {
+        this.currentPort = currentPort;
     }
 
     setSail() {
         return this.hasSetSail = true;
     };
+
+    dock(port) {
+        this.currentPort = port;
+    }
 }
 
 module.exports = Ship;
