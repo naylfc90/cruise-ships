@@ -22,9 +22,10 @@ describe("Ship", () => {
       const isleOfMan = new Port("Isle of Man");
       const itinerary = new Itinerary([albertDock, isleOfMan]);
       const ship = new Ship(itinerary);
-
       ship.setSail();
+
       expect(ship.currentPort).toBeFalsy();
+      expect(albertDock.ships).not.toContain(ship);
     });
     it("checks the ship has docked at a new port", () => {
       const albertDock = new Port("Albert Dock");
@@ -33,7 +34,9 @@ describe("Ship", () => {
       const ship = new Ship(itinerary);
       ship.setSail();
       ship.dock();
-      expect(ship.currentPort).toEqual(itinerary.ports[1]);
+      
+      expect(ship.currentPort).toBe(isleOfMan);
+      expect(isleOfMan.ships).toContain(ship);
     });
     it("ship cannot sail further than its itinerary", () => {
       const albertDock = new Port("Albert Dock");
@@ -45,5 +48,11 @@ describe("Ship", () => {
       ship.dock();
     
       expect(() => ship.setSail()).toThrowError("End of itinerary reached");
+    });
+    it("checks that ship has been added to port on creation", () => {
+      const albertDock = new Port("Albert Dock");
+      const itinerary = new Itinerary([albertDock]);
+      const ship = new Ship(itinerary);
+      expect(albertDock.ships).toContain(ship);
     });
 });
