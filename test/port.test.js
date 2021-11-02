@@ -1,7 +1,5 @@
 //Port test file
 const Port = require("../src/port");
-const Itinerary = require("../src/itinerary");
-const Ship = require("../src/ship");
 
 describe("Port", () => {
     it("returns an object", () => {
