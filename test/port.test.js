@@ -9,19 +9,17 @@ describe("Port", () => {
     });
     it("checks that ships can be added to the port", () => {
       const port = new Port("Albert Dock");
-      const itinerary = new Itinerary(port);
-      const ship = new Ship(itinerary);
+      const ship = {};
       port.addShip(ship);
       expect(port.ships).toContain(ship);
     });
     it("checks that ships can be removed from the port", () => {
       const port = new Port("Albert Dock");
-      const itinerary = new Itinerary([port]);
-      const ship = new Ship(itinerary);
-      const shipTwo = new Ship(itinerary);
+      const ship = {};
+      const shipTwo = {};
       port.addShip(ship);
       port.addShip(shipTwo);
       port.removeShip(ship);
-      expect(port.ships).toContain(shipTwo);
+      expect(port.ships).toEqual([shipTwo]);
     });
 });

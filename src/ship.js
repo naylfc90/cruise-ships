@@ -4,8 +4,6 @@ class Ship {
         this.itinerary = itinerary;
         this.currentPort = itinerary.ports[0];
         this.previousPort = null;
-        //when I comment this out it passes Port tests
-        //when it is included it fails Port tests but passes Ship tests
         this.currentPort.addShip(this);
     }
 
