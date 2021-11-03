@@ -3,7 +3,7 @@ const Port = require("../src/port");
 
 describe("Port", () => {
     it("returns an object", () => {
-      expect(new Port("Albert Dock")).toBeInstanceOf(Object);
+      expect(new Port()).toBeInstanceOf(Object);
     });
     it("checks that ships can be added to the port", () => {
       const port = new Port("Albert Dock");
