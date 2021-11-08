@@ -19,12 +19,12 @@ describe("Port", () => {
       expect(new Port()).toBeInstanceOf(Object);
     });
     it("checks that ships can be added to the port", () => {
-      const shipTwo = {};
+      const shipTwo = jest.fn();
       albertDock.addShip(shipTwo);
       expect(albertDock.ships).toContain(shipTwo);
     });
     it("checks that ships can be removed from the port", () => {
-      const shipTwo = {};
+      const shipTwo = jest.fn();
       albertDock.addShip(shipTwo);
       albertDock.removeShip(shipTwo);
       expect(albertDock.ships).toEqual([ship]);
