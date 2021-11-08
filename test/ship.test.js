@@ -1,6 +1,6 @@
 //Ship test file
 const Ship = require("../src/ship");
-const Port = require("../src/port");
+//const Port = require("../src/port");
 const Itinerary = require("../src/itinerary");
 
 describe("Ship", () => {
