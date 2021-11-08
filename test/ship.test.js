@@ -10,8 +10,18 @@ describe("Ship", () => {
     let itinerary;
     let ship;
     beforeEach(() => {
-      albertDock = new Port("Albert Dock");
-      isleOfMan = new Port("Isle of Man");
+      albertDock = {
+        addShip: jest.fn(),
+        removeShip: jest.fn(),
+        name: "Albert Dock",
+        ships: []
+      };
+      isleOfMan = {
+        addShip: jest.fn(),
+        removeShip: jest.fn(),
+        name: "Isle of Man",
+        ships: []
+      };
       itinerary = new Itinerary([albertDock, isleOfMan]);
       ship = new Ship(itinerary);
     });
@@ -25,14 +35,14 @@ describe("Ship", () => {
       ship.setSail();
 
       expect(ship.currentPort).toBeFalsy();
-      expect(albertDock.ships).not.toContain(ship);
+      expect(albertDock.removeShip).toHaveBeenCalledWith(ship);
     });
     it("checks the ship has docked at a new port", () => {
       ship.setSail();
       ship.dock();
       
       expect(ship.currentPort).toBe(isleOfMan);
-      expect(isleOfMan.ships).toContain(ship);
+      expect(albertDock.addShip).toHaveBeenCalledWith(ship);
     });
     it("ship cannot sail further than its itinerary", () => {
       ship.setSail();
@@ -41,7 +51,7 @@ describe("Ship", () => {
       expect(() => ship.setSail()).toThrowError("End of itinerary reached");
     });
     it("checks that ship has been added to port on creation", () => {
-      expect(albertDock.ships).toContain(ship);
+      expect(albertDock.addShip).toHaveBeenCalledWith(ship);
     });
   });
 });
