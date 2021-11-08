@@ -1,7 +1,7 @@
 //Ship test file
 const Ship = require("../src/ship");
 //const Port = require("../src/port");
-const Itinerary = require("../src/itinerary");
+//const Itinerary = require("../src/itinerary");
 
 describe("Ship", () => {
   describe("constructor", () => {
@@ -22,7 +22,10 @@ describe("Ship", () => {
         name: "Isle of Man",
         ships: []
       };
-      itinerary = new Itinerary([albertDock, isleOfMan]);
+      itinerary = {
+        ports: [albertDock, isleOfMan]
+      };
+      
       ship = new Ship(itinerary);
     });
     it("returns an object", () => {
