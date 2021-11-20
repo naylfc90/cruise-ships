@@ -77,7 +77,7 @@
 
         controller.ship.itinerary.forEach((port) => {
           const newPort = new Port(port);
-          controller.renderPorts(ship.itinerary.ports[newPort]);
+          controller.renderPorts(newPort);
         });
 
         //testing -> controller.renderPorts(controller.ship.itinerary.ports);
