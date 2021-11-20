@@ -44,7 +44,7 @@
     <script src="./src/ship.js"></script>
     <script>
 
-      // creating classes and calling relevant functions
+      // // creating classes and calling relevant functions
       //   const itinerary = new Itinerary([
       //     new Port('New York City'), 
       //     new Port('Dublin'),
@@ -73,7 +73,7 @@
       controller = new Controller(ship);
 
       addPort.addEventListener("click", () => {
-        controller.ship.itinerary.ports.push(userPort.value);
+        controller.ship.itinerary.push(userPort.value);
 
         controller.ship.itinerary.forEach((port) => {
           const newPort = new Port(port);

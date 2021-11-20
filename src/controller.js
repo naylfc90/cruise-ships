@@ -31,7 +31,6 @@
       const nextPortElement = document.querySelector(
         `[data-port-index='${nextPortIndex}']`
       );
-      const lastPortIndex = ship.itinerary.ports.length;
 
       //checks that it isnt the end of itinerary, if it isn't then notifies the next stop
 
