@@ -73,17 +73,17 @@
       controller = new Controller(ship);
 
       addPort.addEventListener("click", () => {
-        controller.ship.itinerary.push(userPort.value);
+        controller.ship.itinerary.ports.push(userPort.value);
 
         controller.ship.itinerary.forEach((port) => {
           const newPort = new Port(port);
+          controller.renderPorts(ship.itinerary.ports[newPort]);
         });
 
-        controller.renderPorts(ship.itinerary.ports);
+        //testing -> controller.renderPorts(controller.ship.itinerary.ports);
         controller.renderShip();
     
       });
-
 
     </script>
 </body>
