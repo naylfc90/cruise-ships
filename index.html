@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Cruise Ships</title>
+</head>
+<body>
+  <section id = "intro">
+    <h1>Cruise Simulator</h1><br><br><br>
+    <form id="sailform">
+      <label for="userport">Where are you travelling?</label><br><br>
+
+      <input type="text" id="userport" name="userport"></input>
+
+      <button id="addport">Add</button><br><br>
+
+      <input id="submit" type="submit" value="Submit"><br><br>
+    </form>
+  </section>
+
+  <section id = portmap>
+    <div id="viewport">
+      <div id="ports"></div>
+      <div id="ship"></div>
+    </div>
+  </section>
+
+  <section id = "controls">
+    <div> 
+      <button id="sailbutton">Set Sail!</button>
+    </div>
+  </section>
+      
+    <script src="./src/controller.js"></script>
+    <script src="./src/port.js"></script>
+    <script src="./src/itinerary.js"></script>
+    <script src="./src/ship.js"></script>
+    <script>
+
+      // // creating classes and calling relevant functions
+      //   const itinerary = new Itinerary([
+      //     new Port('New York City'), 
+      //     new Port('Dublin'),
+      //     new Port('Isle of Man'),
+      //     new Port('Liverpool')
+      // ]);
+      //   const ship = new Ship(itinerary);
+      //   const controller = new Controller(ship);
+
+      // controller.renderPorts(itinerary.ports);
+      // controller.renderShip();
+
+
+
+      // created functionality for the users form
+
+      const userPort = document.getElementById("userport");
+      const addPort = document.getElementById("addport");
+      const submitPorts = document.getElementById("submit");
+
+      let itinerary;
+      let ship;
+      let controller;
+      const addedPorts = [];
+      const portsList = [];
+
+      addPort.addEventListener("click", () => {
+        addedPorts.push(userPort.value);
+
+      //  need to intefere with DOM to add ports when add button is clicked rather than submitting/refreshing page
+      });
+
+      submitPorts.addEventListener("click", () => {
+        addedPorts.forEach((port) => {
+          const newPort = new Port(port);
+          portsList.push(newPort);
+        });
+        itinerary = new Itinerary(portsList);
+        ship = new Ship(itinerary);
+        controller = new Controller(ship);
+
+        controller.renderPorts(itinerary.ports);
+        controller.renderShip();
+        submitPorts.disabled = true;
+      });
+
+    </script>
+</body>
+</html>
