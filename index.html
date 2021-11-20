@@ -22,8 +22,6 @@
       <input type="text" id="userport" name="userport"></input>
 
       <button id="addport">Add</button><br><br>
-
-      <input id="submit" type="submit" value="Submit"><br><br>
     </form>
   </section>
 
@@ -46,7 +44,7 @@
     <script src="./src/ship.js"></script>
     <script>
 
-      // // creating classes and calling relevant functions
+      // creating classes and calling relevant functions
       //   const itinerary = new Itinerary([
       //     new Port('New York City'), 
       //     new Port('Dublin'),
@@ -62,36 +60,30 @@
 
 
       // created functionality for the users form
+      //  need to intefere with DOM to add ports when add button is clicked rather than submitting/refreshing page
 
       const userPort = document.getElementById("userport");
       const addPort = document.getElementById("addport");
-      const submitPorts = document.getElementById("submit");
 
       let itinerary;
       let ship;
       let controller;
-      const addedPorts = [];
-      const portsList = [];
+      itinerary = new Itinerary([]);
+      ship = new Ship(itinerary);
+      controller = new Controller(ship);
 
       addPort.addEventListener("click", () => {
-        addedPorts.push(userPort.value);
+        controller.ship.itinerary.ports.push(userPort.value);
 
-      //  need to intefere with DOM to add ports when add button is clicked rather than submitting/refreshing page
-      });
-
-      submitPorts.addEventListener("click", () => {
-        addedPorts.forEach((port) => {
+        controller.ship.itinerary.forEach((port) => {
           const newPort = new Port(port);
-          portsList.push(newPort);
         });
-        itinerary = new Itinerary(portsList);
-        ship = new Ship(itinerary);
-        controller = new Controller(ship);
 
-        controller.renderPorts(itinerary.ports);
+        controller.renderPorts(ship.itinerary.ports);
         controller.renderShip();
-        submitPorts.disabled = true;
+    
       });
+
 
     </script>
 </body>

@@ -31,12 +31,17 @@
       const nextPortElement = document.querySelector(
         `[data-port-index='${nextPortIndex}']`
       );
+      const lastPortIndex = ship.itinerary.ports.length;
+
+      //checks that it isnt the end of itinerary, if it isn't then notifies the next stop
 
       if (!nextPortElement) {
         return this.renderMessage(`You've completed your itinerary!`);
+      } else {
+        this.renderMessage(
+          `Now departing ${ship.currentPort.name}, the next stop is ${ship.itinerary.ports[nextPortIndex].name}`
+        );
       }
-
-      this.renderMessage(`Now departing ${ship.currentPort.name}.`);
 
       const shipElement = document.querySelector("#ship");
       const sailInterval = setInterval(() => {
@@ -44,7 +49,8 @@
         if (shipLeft === nextPortElement.offsetLeft - 32) {
           ship.setSail();
           ship.dock();
-          this.renderMessage(`Welcome to ${ship.currentPort.name}!`);
+          if (ship.itinerary.ports[currentPortIndex])
+            this.renderMessage(`Welcome to ${ship.currentPort.name}!`);
           clearInterval(sailInterval);
         }
 
