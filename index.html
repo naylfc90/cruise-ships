@@ -50,19 +50,16 @@
       itinerary = new Itinerary([]);
       ship = new Ship(itinerary);
       controller = new Controller(ship);
-      
+
       document.querySelector('#sailform').addEventListener("submit", () => {
         event.preventDefault();
         const portInput = document.querySelector('#userport').value;
         const port = new Port(portInput);
         controller.ship.itinerary.ports.push(port);
         controller.ship.dock();
-        controller.renderPorts(port);
+        controller.renderPorts();
         controller.renderShip();
-        //console.log(ship.itinerary.ports);
       });
-      
-
     </script>
 </body>
 </html>

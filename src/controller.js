@@ -61,15 +61,15 @@
       const portsElement = document.querySelector("#ports");
       portsElement.style.width = "0px";
 
+      portsElement
+        .querySelectorAll("[data-port-index]")
+        .forEach((element) => element.remove());
+
       this.ship.itinerary.ports.forEach((port, index) => {
         const newPortElement = document.createElement("div");
         newPortElement.dataset.portName = port.name;
         newPortElement.dataset.portIndex = index;
         newPortElement.className = "port";
-
-        // const dataPorts = document.querySelector("#ports");
-        // const dataVar = dataPorts.querySelectorAll("[data-port-index]");
-        // console.log(dataVar.length);
 
         portsElement.appendChild(newPortElement);
 
