@@ -8,4 +8,4 @@ The idea is to build a network of classes which communicate with each other to a
 
 Check out the GUI version of the Cruise-Ships [here](https://naylfc90.github.io/cruise-ships/)
 
-![Cruise Ships GUI Screenshot](/Users/Nathan/Desktop/projects/cruise-ships/cs_screenshot.png/ "Cruise Ships GUI")
+![Cruise Ships GUI Screenshot](/Users/Nathan/Desktop/projects/cruise-ships/cs_screenshot.png/?raw=true "Cruise Ships GUI")
