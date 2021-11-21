@@ -21,7 +21,7 @@
 
       <input type="text" id="userport" name="userport"></input>
 
-      <button id="addport">Add</button><br><br>
+      <button id="submit">Add</button><br><br>
     </form>
   </section>
 
@@ -44,45 +44,21 @@
     <script src="./src/ship.js"></script>
     <script>
 
-      // // creating classes and calling relevant functions
-      //   const itinerary = new Itinerary([
-      //     new Port('New York City'), 
-      //     new Port('Dublin'),
-      //     new Port('Isle of Man'),
-      //     new Port('Liverpool')
-      // ]);
-      //   const ship = new Ship(itinerary);
-      //   const controller = new Controller(ship);
-
-      // controller.renderPorts(itinerary.ports);
-      // controller.renderShip();
-
-
-
-      // created functionality for the users form
-      //  need to intefere with DOM to add ports when add button is clicked rather than submitting/refreshing page
-
-      const userPort = document.getElementById("userport");
-      const addPort = document.getElementById("addport");
-
       let itinerary;
       let ship;
       let controller;
       itinerary = new Itinerary([]);
       ship = new Ship(itinerary);
       controller = new Controller(ship);
-
-      addPort.addEventListener("click", () => {
-        controller.ship.itinerary.ports.push(userPort.value);
-
-        controller.ship.itinerary.forEach((port) => {
-          const newPort = new Port(port);
-          controller.renderPorts(newPort);
-        });
-
-        //testing -> controller.renderPorts(controller.ship.itinerary.ports);
+      document.querySelector('#sailform').addEventListener("submit", () => {
+        event.preventDefault();
+        const portInput = document.querySelector('#userport').value;
+        const port = new Port(portInput);
+        controller.ship.itinerary.ports.push(port);
+        controller.ship.dock();
+        controller.renderPorts(port);
         controller.renderShip();
-    
+        console.log(ship.itinerary.ports);
       });
 
     </script>

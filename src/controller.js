@@ -38,7 +38,7 @@
         return this.renderMessage(`You've completed your itinerary!`);
       } else {
         this.renderMessage(
-          `Now departing ${ship.currentPort.name}, the next stop is ${ship.itinerary.ports[nextPortIndex].name}`
+          `Now departing ${ship.currentPort.name}, the next stop is ${ship.itinerary.ports[nextPortIndex].name}.`
         );
       }
 
@@ -61,11 +61,15 @@
       const portsElement = document.querySelector("#ports");
       portsElement.style.width = "0px";
 
-      ports.forEach((port, index) => {
+      this.ship.itinerary.ports.forEach((port, index) => {
         const newPortElement = document.createElement("div");
         newPortElement.dataset.portName = port.name;
         newPortElement.dataset.portIndex = index;
         newPortElement.className = "port";
+
+        // const dataPorts = document.querySelector("#ports");
+        // const dataVar = dataPorts.querySelectorAll("[data-port-index]");
+        // console.log(dataVar.length);
 
         portsElement.appendChild(newPortElement);
 
